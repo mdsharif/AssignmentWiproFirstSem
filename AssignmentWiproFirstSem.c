@@ -1,0 +1,906 @@
+ #include<stdio.h>
+#include <stdlib.h>
+#include<string.h>
+wc=0;
+int array[40];
+int a[10][10],b[10][10],c[10][10];
+main()
+{
+    int i;
+	char option,ansConf;
+    char q1[]="Write a program to check whether the Given STRING is PALINDROME or not using Pointer.";
+    char q2[]="Write a program to accept a string and find out number of Vowels,Consonants,Special Characters,Lines(sentence),digits,uppercase letter,lowercase letters and words.";
+    char q3[]="Write a program to implement Bubble sort, Insertion Sort, Selection sort, Heap sort, Merge sort, Quick sort, Shell sort and Linear sort strategies.";
+    char q4[]="Write a program to two Matrix A and B of order NxN and show the following : Row addition, column addition, Row multiplication, Column multiplication, Addition of matrices, Subtraction of Matrices, Multiplication of Matrices and Transpose of a Matrix.";
+    char q5[]="Write a program with all different categories of function to check whether the given number is N-Narcissistic number/Armstrong Number, Special Number, Perfect Number, Prime Number, Magic Number and Palindrome Number.";
+  //  system("cls");
+    if(wc++==0)
+    {
+        printf("************************WELCOME************************\n");
+        printf("*This program contains all the assignment given by Sir*\n");
+    }
+    else
+    printf("***************************Main Function is Running***************\n");
+    printf("\n**There are total five questions in this assignment. Which one would you like to see ??** \n");
+    printf("\n1.Question1\n2.Question2\n3.Question3\n4.Question4\n5.Question5\n6.Close\n");
+    printf("Kindly enter the Correct Option : ");
+    scanf(" %c",&option);
+    if((option-48)>=1 && (option-48)<=5)
+    {
+        system("cls");
+		printf("\nHere is your Required Question\n");
+	}
+	switch(option-48)
+    {
+        case 1:
+            system("cls");
+            printf("\n1.%s\n",q1);
+            break;
+        case 2:
+            system("cls");
+            printf("\n2.%s\n",q2);
+            break;
+        case 3:
+            system("cls");
+            printf("\n3.%s\n",q3);
+            break;
+        case 4:
+            system("cls");
+            printf("\n4.%s\n",q4);
+            break;
+        case 5:
+            system("cls");
+            printf("\n5.%s\n",q5);
+            break;
+        case 6:
+            system("cls");
+            close();
+        default:
+            system("cls");
+            printf("\nWrong Input. Kindly enter the Correct\n");
+    }
+    printf("\nWant to see the Program of this Question ?(y/n) : ");
+    while(1)
+    {
+	      scanf(" %c",&ansConf);
+	      if(ansConf=='y' || ansConf=='Y' )
+	      {
+				switch(option-48)
+				{
+					case 1:
+					    system("cls");
+						answers1();
+						break;
+					case 2:
+					    system("cls");
+						answers2();
+						break;
+					case 3:
+					    system("cls");
+						answers3();
+						break;
+					case 4:
+					    system("cls");
+						answers4();
+						break;
+					case 5:
+				 	    system("cls");
+						answers5();
+						break;
+				}
+            main();
+	      }
+	      else if(ansConf=='n' || ansConf=='N')
+          {
+                system("cls");
+                main();
+          }
+	      else
+	        printf("\nKindly press Either Y or N : ");
+    }
+}
+
+
+
+/****************FUNCTION ANSWERS1 STARTS FROM HERE******************/
+void answers1()
+{
+    char str[50],isPalindrome=1;
+    char *pointer=&str,ansConf='Y';
+    while(ansConf=='y'||ansConf=='Y')
+    {
+        system("cls");
+        isPalindrome=1;
+        printf("Enter the string : ");
+        fflush(stdin);
+        gets(str);
+        int length=strlen(str),i,j;
+        for(i=0,j=length-1;i<j;i++,j--)
+        {
+        if(*(pointer+i)!=*(pointer+j))
+            isPalindrome=0;
+        }
+        isPalindrome==1?printf("\n%s is a Palindrome String\n",str):printf("%s is not a Palindrome String\n",str);
+        printf("\nWant to check another String(y/n) : ");
+        scanf(" %c",&ansConf);
+    }system("cls");
+
+}
+/*************************END OF FUNCTION ANSWERS1**************************/
+
+
+/******************FUNCTION ANSWERS2 STARTS FROM HERE***********************/
+int answers2()
+{
+    int i,size,lines=1,words=1,special=0,vowel=0,digit=0,uppercase=0,lowercase=0,consonants=0;
+    printf("Enter the Size of STRING : ");
+    scanf("%d",&size);
+    char str[size];
+    printf("\nNow enter the String : \n");
+    fflush(stdin);
+    gets(str);
+
+    for(i=0; str[i]!=NULL; i++)
+    {
+        if(str[i]=='a' || str[i]=='A' || str[i]=='e' || str[i]=='E' || str[i]=='i' || str[i]=='I' || str[i]=='o' || str[i]=='O' || str[i]=='u' || str[i]=='U' )
+            vowel++;
+        if(str[i]>=48 && str[i]<=57)
+            digit++;
+        if(str[i]>=65 && str[i]<=90)
+            uppercase++;
+        if(str[i]>=97 && str[i]<=122)
+            lowercase++;
+        if(str[i]=='.')
+        	lines++;
+        if(str[i]==' ')
+        	words++;
+
+        consonants=uppercase+lowercase-vowel;
+        special=strlen(str)-(uppercase+lowercase+digit+words-1);
+    }
+    printf("\nWhat we found.... \n");
+    printf("\nNumber of Vowels      : %d",vowel);
+    printf("\nNumber of Consonants  : %d",consonants);
+    printf("\nNumber of Lowercase   : %d",lowercase);
+    printf("\nNumber of Uppercase   : %d",uppercase);
+    printf("\nNumber of Digit       : %d",digit);
+    printf("\nNumber of Special Char: %d",special);
+    printf("\nNumber of Sentence    : %d",lines);
+    printf("\nNumber of Words       : %d\n",words);
+    return 0;
+}
+/*********************END OF FUNCTION ASNWERS2********************************/
+
+/**********************FUNCTION ANSWERS3 STARTS FROM HERE***********************/
+int answers3()
+{
+	printf("***Program of Question3 is Running...***\n");
+    int size,i;
+    char answers3Option;
+    printf("How many Numbers do you have ? : ");
+    scanf("%d",&size);
+    printf("\nNow enter all %d Numbers to Start sorting them.. \n",size);
+    for(i=0;i<size;i++)
+    	scanf("%d",&array[i]);
+    while(1)
+    {
+
+        printf("\n1.Bubble Sort\n2.Insertion Sort\n3.Selection Sort\n4.Heap Sort\n5.Merge Sort\n6.Quick Sort\n7.Shell Sort\n8.Linear Search\n9.Back\n");
+        printf("Choose the Option : ");
+        scanf(" %c",&answers3Option);
+
+        switch(answers3Option-48)
+        {
+        	case 1:
+        		system("cls");
+        		displayArray(size);
+        		bubble(size);
+        		printf("\nAfter Sorting ");
+        		displayArray(size);
+        		break;
+        	case 2:
+        		system("cls");
+        		displayArray(size);
+        		insertion(size);
+        		printf("\nAfter Sorting ");
+        		displayArray(size);
+        		break;
+        	case 3:
+        		system("cls");
+        		displayArray(size);
+        		selection(size);
+        		printf("\nAfter Sorting");
+        		displayArray(size);
+        		break;
+        	case 4:
+        		system("cls");
+        		displayArray(size);
+        		heap(size);
+        		printf("\nAfter Sorting ");
+        		displayArray(size);
+        		break;
+        	case 5:
+        		system("cls");
+        		displayArray(size);
+        		merge(size);
+        		printf("\nAfter Sorting ");
+        		displayArray(size);
+        		break;
+        	case 6:
+        		system("cls");
+        		displayArray(size);
+        		quick(size);
+        		printf("\nAfter Sorting ");
+        		displayArray(size);
+        		break;
+        	case 7:
+        		system("cls");
+        		displayArray(size);
+        		shell(size);
+        		printf("\nAfter Sorting ");
+        		displayArray(size);
+        		break;
+        	case 8:
+        		system("cls");
+        		displayArray(size);
+        		linear(size);
+        		break;
+        	case 9:
+        		system("cls");
+        		main();
+        	default:
+        		printf("\nWrong Option Chosen\nKindly Choose the Correct Option :( \n");
+        }
+    }
+}
+void displayArray(int n)
+{
+	int i=0;
+	printf("Your Array is : \n ");
+	while(i++<n)
+		printf(" %d",array[i-1]);
+	printf("\n");
+}
+int bubble(int n)
+{
+	int i,j;
+	for(i=0;i<n;i++)
+		for(j=0;j<n-1;j++)
+			if(array[j]>array[j+1])
+			{
+				array[j]  =array[j]+array[j+1];
+				array[j+1]=array[j]-array[j+1];
+				array[j]  =array[j]-array[j+1];
+			}
+}
+int insertion(int n)
+{
+	int i,j;
+	for(i=0;i<n;i++)
+		for(j=i+1;j<n;j++)
+		if(array[i]>array[j])
+		{
+			array[i]=array[i]+array[j];
+			array[j]=array[i]-array[j];
+			array[i]=array[i]-array[j];
+		}
+}
+int selection(int n)
+{
+	int i,j;
+	for(i=0;i<n;i++)
+		for(j=i+1;j<n;j++)
+		if(array[i]>array[j])
+		{
+			array[i]=array[i]+array[j];
+			array[j]=array[i]-array[j];
+			array[i]=array[i]-array[j];
+		}
+}
+int heap(int n)
+{
+	int i,j;
+	for(i=0;i<n;i++)
+		for(j=i+1;j<n;j++)
+		if(array[i]>array[j])
+		{
+			array[i]=array[i]+array[j];
+			array[j]=array[i]-array[j];
+			array[i]=array[i]-array[j];
+		}
+}
+int merge(int n)
+{
+	int i,j;
+	for(i=0;i<n;i++)
+		for(j=i+1;j<n;j++)
+		if(array[i]>array[j])
+		{
+			array[i]=array[i]+array[j];
+			array[j]=array[i]-array[j];
+			array[i]=array[i]-array[j];
+		}
+}
+int quick(int n)
+{
+	int i,j;
+	for(i=0;i<n;i++)
+		for(j=i+1;j<n;j++)
+		if(array[i]>array[j])
+		{
+			array[i]=array[i]+array[j];
+			array[j]=array[i]-array[j];
+			array[i]=array[i]-array[j];
+		}
+}
+int shell(int n)
+{
+	int i,j;
+	for(i=0;i<n;i++)
+		for(j=i+1;j<n;j++)
+		if(array[i]>array[j])
+		{
+			array[i]=array[i]+array[j];
+			array[j]=array[i]-array[j];
+			array[i]=array[i]-array[j];
+		}
+}
+int linear(int n)
+{
+	int i,j,found=0,number;
+	printf("Enter the Number which you want to Search : ");
+	scanf("%d",&number);
+	for(i=0;i<n;i++)
+		if(number==array[i])
+		{
+			found=1;
+			break;
+		}
+	found==0?printf("\n%d is Not found the Array\n",number):printf("\n%d is found in the Array\n",number);
+}
+
+
+/****************************END OF FUNCTION ANSWERS3***********************/
+
+/******************FUNCTION ANSWERS4 STARTS FROM HERE***********************/
+int answers4()
+{
+   int answers4Option=0,rowAddition,columnAddition,loop,rowMultiplication,columnMultiplication;
+    char matrixSelection;
+    system("cls");
+    printf("***Program of Question4 is Running...***\n");
+
+    int order,i,j,k,n;
+    printf("Enter the Order of Matrix : ");
+    scanf("%d",&n);
+
+    printf("\nAs this is the Square Matrix.\nKindly enter all the %d element of Matrix A either in Matrix form or in Linear form\n",n*n);
+    for(i=0;i<n;i++)
+        for(j=0;j<n;j++)
+            scanf("%d",&a[i][j]);
+    printf("\n\nWell done!!.Now enter all the %d element of Matrix B like you entered Previously\n",n*n);
+    for(i=0;i<n;i++)
+        for(j=0;j<n;j++)
+            scanf("%d",&b[i][j]);
+    printf("\n\nGreat. :) ");
+    while(1)
+    {
+            printf("\nNow What should we do ?? \n\n");
+            printf("1.Row Addition\n2.Column Addition\n3.Row Multiplication\n4.Column Multiplication\n5.Transpose of a Matrix\n6.Addition of Matrices\n7.Subtraction of Matrices\n8.Multiplication of Matrices\n9.Back\n\n");
+            scanf(" %c",&answers4Option);
+            switch(answers4Option-48)
+            {
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                    system("cls");
+                    printf("\nFor Which Matrix A or B : ");
+            //        fflush(stdin);
+                    scanf(" %c",&matrixSelection);
+                    switch(answers4Option-48)
+                    {
+                        case 1:
+                            switch(matrixSelection)
+                            {
+                                case 'a':
+                                case 'A':
+                                    displayMatrixA(n);
+                                    printf("\n");
+
+                                    for(i=0;i<n;i++)
+                                    {
+                                        printf("\nSum of Row %d i.e. ",i+1);
+                                        rowAddition=0;
+                                        for(j=0;j<n;j++)
+                                        {
+                                            printf(" %d",a[i][j]);
+                                            rowAddition+=a[i][j];
+                                            j==(n-1)?printf(" ="):printf(" +");
+                                        }
+                                        printf(" %d",rowAddition);
+                                    }
+                                    break;
+                                case 'b':
+                                case 'B':
+                                    displayMatrixB(n);
+                                    printf("\n");
+                                    for(i=0;i<n;i++)
+                                    {
+                                        printf("\nSum of Row %d i.e. ",i+1);
+                                        rowAddition=0;
+                                        for(j=0;j<n;j++)
+                                        {
+                                            printf(" %d",b[i][j]);
+                                            rowAddition+=b[i][j];
+                                            j==(n-1)?printf(" ="):printf(" +");
+                                        }
+                                        printf(" %d",rowAddition);
+                                    }
+                                    printf("\n");
+                                	break;
+                            }
+                            break;
+                        case 2:
+                            switch(matrixSelection)
+                            {
+                                case 'a':
+                                case 'A':
+                                    displayMatrixA(n);
+                                    printf("\n");
+
+                                    for(i=0;i<n;i++)
+                                    {
+                                        printf("\nSum of Column %d i.e. ",i+1);
+                                        columnAddition=0;
+                                        for(j=0;j<n;j++)
+                                        {
+                                            printf(" %d",a[j][i]);
+                                            columnAddition+=a[j][i];
+                                            j==(n-1)?printf(" ="):printf(" +");
+                                        }
+                                        printf(" %d",columnAddition);
+                                    }
+                                    break;
+                                case 'b':
+                                case 'B':
+                                    displayMatrixB(n);
+                                    printf("\n");
+                                    for(i=0;i<n;i++)
+                                    {
+                                        printf("\nSum of Column %d i.e. ",i+1);
+                                        columnAddition=0;
+                                        for(j=0;j<n;j++)
+                                        {
+                                            printf(" %d",b[j][i]);
+                                            columnAddition+=b[j][i];
+                                            j==(n-1)?printf(" ="):printf(" +");
+                                        }
+                                        printf(" %d",columnAddition);
+                                    }
+                                    printf("\n");
+                                	break;
+                            }
+                            break;
+                        case 3:
+                            switch(matrixSelection)
+                            {
+                                case 'a':
+                                case 'A':
+                                    displayMatrixA(n);
+                                    printf("\n");
+                                    for(i=0;i<n;i++)
+                                    {
+                                        rowMultiplication=1;
+                                        for(j=0;j<n;j++)
+                                        {
+                                            rowMultiplication*=a[i][j];
+                                        }
+                                        printf("\nMultiplication of Row %d is %d ",i+1,rowMultiplication);
+                                    }
+                                    printf("\n");
+                                	break;
+                                case 'b':
+                                case 'B':
+                                    displayMatrixB(n);
+                                    printf("\n");
+                                    for(i=0;i<n;i++)
+                                    {
+                                        rowMultiplication=1;
+                                        for(j=0;j<n;j++)
+                                        {
+                                            rowMultiplication*=b[i][j];
+                                        }
+                                        printf("\nMultiplication of Row %d is %d ",i+1,rowMultiplication);
+                                    }
+                            		printf("\n");
+                                	break;
+                            }
+                            break;
+                        case 4:
+                            switch(matrixSelection)
+                            {
+                                case 'a':
+                                case 'A':
+                                    displayMatrixA(n);
+                                    printf("\n");
+                                    for(i=0;i<n;i++)
+                                    {
+                                        rowMultiplication=1;
+                                        for(j=0;j<n;j++)
+                                        {
+                                            rowMultiplication*=a[j][i];
+                                        }
+                                        printf("\nMultiplication of Row %d is %d ",i+1,rowMultiplication);
+                                    }
+                                    printf("\n");
+                                	break;
+                                case 'b':
+                                case 'B':
+                                    displayMatrixB(n);
+                                    printf("\n");
+                                    for(i=0;i<n;i++)
+                                    {
+                                        columnMultiplication=1;
+                                        for(j=0;j<n;j++)
+                                        {
+                                            columnMultiplication*=b[j][i];
+                                        }
+                                        printf("\nMultiplication of Row %d is %d ",i+1,columnMultiplication);
+                                    }
+                            		printf("\n");
+                                	break;
+                            }
+                            break;
+                        case 5:
+                            switch(matrixSelection)
+                            {
+                                case 'a':
+                                case 'A':
+                                    displayMatrixA(n);
+                                    printf("\nTranspose : \n");
+                                    for(i=0;i<n;i++)
+                                    {
+                                        for(j=0;j<n;j++)
+                                        {
+                                            printf("%d ",a[j][i]);
+                                        }
+                                    	printf("\n");
+                                    }
+                                break;
+                                case 'b':
+                                case 'B':
+                                    displayMatrixB(n);
+                                   printf("\nTranspose : \n");
+                                    for(i=0;i<n;i++)
+                                    {
+                                        for(j=0;j<n;j++)
+                                        {
+                                            printf("%d ",b[j][i]);
+                                        }
+                                    	printf("\n");
+                                    }
+                                break;
+                            }
+                            break;
+                    }
+                    break;
+                case 6:
+                    system("cls");
+                    displayMatrixA(n);
+                    displayMatrixB(n);
+                    for(i=0;i<n;i++)
+                        for(j=0;j<n;j++)
+                            c[i][j]=a[i][j]+b[i][j];
+                    printf("\nThe Sum of Matrix A and B is Matrix C\n");
+                    displayMatrixC(n);
+                    break;
+                case 7:
+                    system("cls");
+                    displayMatrixA(n);
+                    displayMatrixB(n);
+                    for(i=0;i<n;i++)
+                        for(j=0;j<n;j++)
+                            c[i][j]=a[i][j]-b[i][j];
+                    printf("\nThe Subtraction of Matrix A and B is Matrix C\n");
+                    displayMatrixC(n);
+                    break;
+                case 8:
+                    system("cls");
+                    displayMatrixA(n);
+                    displayMatrixB(n);
+                    for(i=0;i<n;i++)
+                        for(j=0;j<n;j++)
+                        {
+                            c[i][j]=0;
+                            for(k=0;k<n;k++)
+                                c[i][j]+=a[i][k]*b[k][j];
+                        }
+                    printf("\nThe Multiplication of Matrix A and B is Matrix C\n");
+                    displayMatrixC(n);
+                    break;
+                case 9:
+                    system("cls");
+                    return 1;
+                default:
+                    system("cls");
+                    printf("\nWrong Input. Kindly enter the Correct\n");
+            }
+    }
+    return 0;
+}
+
+void displayMatrixA(int n)
+{
+    int i,j;
+    printf("\n***MATRIX A***\n");
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<n;j++)
+            printf("%d ",a[i][j]);
+        printf("\n");
+    }
+}
+
+void displayMatrixB(int n)
+{
+    int i,j;
+    printf("\n***MATRIX B***\n");
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<n;j++)
+            printf("%d ",b[i][j]);
+        printf("\n");
+    }
+}
+
+void displayMatrixC(int n)
+{
+    int i,j;
+    printf("\n***MATRIX C***\n");
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<n;j++)
+            printf("2%d ",c[i][j]);
+        printf("\n");
+    }
+}
+
+/***********************END OF FUNCTION ANSWERS4**********************/
+
+/*****************FUNCTION ASNWERS5 STARTS FROM HERE***********************/
+int answers5()
+{
+    printf("***Program of Question5 is Running...***\n");
+    int answers5Option=0,number;
+    printf("\nEnter the Number : ");
+    scanf("%d",&number);
+    while(1)
+    {
+        printf("\nWhat do you want to check about the Number %d\n",number);
+        printf("\n1.Armstrong Number\n2.Special Number\n3.Perfect Number\n4.Prime Number\n5.Magic Number\n6.Palindrome Number\n7.Back\n8.Check another Number\n\n");
+        printf("Kindly enter the Correct Option : ");
+        scanf(" %c",&answers5Option);
+
+        switch(answers5Option-48)
+        {
+            case 1:
+                system("cls");
+                if(isArmstrong(number)==1)
+                    printf("\nThe Number %d is an Armstrong.\n",number);
+                else
+                    printf("\nThe Number %d is not an Armstrong\n",number);
+                break;
+            case 2:
+                system("cls");
+                if(isSpecial(number)==1)
+                    printf("\nThe Number %d is an Special Number.\n",number);
+                else
+                    printf("\nThe Number %d is not an Special Number\n",number);
+                break;
+            case 3:
+                system("cls");
+                if(isPerfect(number)==1)
+                    printf("\nThe Number %d is a Perfect Number.\n",number);
+                else
+                    printf("\nThe Number %d is not a Perfect Number\n",number);
+                break;
+            case 4:
+                system("cls");
+                if(isPrime(number)==1)
+                    printf("\nThe Number %d is a Prime Number.\n",number);
+                else
+                    printf("\nThe Number %d is not a Prime Number\n",number);
+                break;
+            case 5:
+                system("cls");
+                if(isMagic(number)==1)
+                    printf("\nThe Number %d is a Magic Number.\n",number);
+                else
+                    printf("\nThe Number %d is not a Magic Number\n",number);
+                break;
+            case 6:
+                system("cls");
+                if(isPalindrome(number)==1)
+                    printf("\nThe Number %d is a Palindrome Number.\n",number);
+                else
+                    printf("\nThe Number %d is not a Palindrome Number\n",number);
+                break;
+            case 7:
+                system("cls");
+                main();
+            case 8:
+                system("cls");
+                printf("\nEnter the new Number : ");
+                scanf("%d",&number);
+                break;
+            default:
+                system("cls");
+                printf("\nWrong Input. Kindly enter the Correct\n");
+        }
+    }
+    return 0;//tells that no need to go back
+
+}
+
+/****************ARMSTRONG FUNCTION**************/
+int isArmstrong(int number)
+{
+    int copyNumber,armstrong=0,digit;
+    copyNumber=number;
+    while(copyNumber)
+    {
+        digit=copyNumber%10;
+        armstrong=armstrong+(digit*digit*digit);
+        copyNumber/=10;
+    }
+    if(number==armstrong)
+        return 1;
+    else
+        return 0;
+}
+/************END OF ARMSTRONG FUNCTION*******************/
+
+/************SPECIAL NUMBER FUNCTION*********************/
+/**********Sum of factorial of each digit****************/
+int isSpecial(int number)
+{
+    int digit,copyNumber,sumOfFact=0;
+    long fact=1;
+    copyNumber=number;
+    while(copyNumber)
+    {
+        fact=1;
+        digit=copyNumber%10;
+        while(digit)
+        {
+            fact*=digit;
+            digit--;
+        }
+        sumOfFact+=fact;
+        copyNumber/=10;
+    }
+    if(sumOfFact==number)
+        return 1;
+    else
+        return 0;
+}
+/************END OF SPECIAL NUMBER FUNCTION**************/
+
+
+/************PERFECT NUMBER FUNCTION********************/
+/*Sum of all divisor is equal to the Number*************/
+int isPerfect(int number)
+{
+    int perfect=0,divisor=1;
+    while(divisor<=(number/2))
+    {
+        if(number%divisor==0)
+            perfect+=divisor;
+            divisor++;
+    }
+    if(perfect==number)
+        return 1;
+    else
+        return 0;
+}
+/************END OF PERFECT NUMBER FUNCTION*************/
+
+/************PRIME NUMBER FUNCTION**********************/
+int isPrime(int number)
+{
+    int divisor=1,isPrime=1;
+    while(++divisor<=(number)/2)
+    {
+        if(number%divisor==0)
+        {
+            isPrime=0;
+            break;
+        }
+    }
+    if(isPrime==1)
+        return 1;
+    else
+        return 0;
+}
+/************END OF PRIME NUMBER FUNCTION***************/
+
+/************MAGIC NUMBER FUNCTION**********************/
+/*product of sum of digit and sum of digit in reverse***/
+int isMagic(int number)
+{
+    int digit,copyNumber,sumOfDigit=0,revSumOfDigit=0,copySumOfDigit;
+    copyNumber=number;
+    while(copyNumber)
+    {
+        digit=copyNumber%10;
+        sumOfDigit+=digit;
+        copyNumber/=10;
+    }
+    copySumOfDigit=sumOfDigit;
+    while(copySumOfDigit)
+    {
+        digit=copySumOfDigit%10;
+        revSumOfDigit=revSumOfDigit*10+digit;
+        copySumOfDigit/=10;
+    }
+    if(sumOfDigit*revSumOfDigit==number)
+        return 1;
+    else
+        return 0;
+}
+/************END OF MAGIC NUMBER FUNCTION***************/
+
+/************PALINDROME FUNCTION************************/
+int isPalindrome(int number)
+{
+    int copyNumber,rev=0,digit;
+    copyNumber=number;
+    while(copyNumber)
+    {
+        digit=copyNumber%10;
+        rev=rev*10+digit;
+        copyNumber/=10;
+    }
+    if(rev==number)
+        return 1;
+    else
+        return 0;
+}
+/************END OF PALINDROME FUNCTIION****************/
+
+/***********************END OF FUNCTION ANSWERS**********************/
+
+
+/*******************close function*******************************/
+int close()
+{
+    int closeOption;
+    char confirm;
+    printf("\nDo you really want to Close the Program(y/n) : ");
+    while(1)
+    {
+        scanf(" %c",&confirm);
+        if(confirm=='y' || confirm=='Y')
+            {
+                system("cls");
+                printf("\n\n*Thanks for Using the Program.");
+                printf("\nCome Back to Check another Program.\n\n");
+                exit(0);
+            }
+        else if(confirm=='n' || confirm=='N')
+        {
+            system("cls");
+            printf("\nNice Decision :). Now Check another question too :)\n");
+            main();
+        }
+        else
+        {
+            printf("\nKindly Enter either Y or N : ");
+        }
+    }
+    return 0;
+}
+/**********************end of close function********************/
+
